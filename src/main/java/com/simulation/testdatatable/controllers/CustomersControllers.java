@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.simulation.testdatatable.dtos.BatchOperationDTO;
+import com.simulation.testdatatable.models.Customers;
 import com.simulation.testdatatable.services.CustomerServices;
 
 @RestController
@@ -27,8 +28,8 @@ public class CustomersControllers {
     }
 
     @GetMapping("/list")
-    public ResponseEntity<Void> getDataCustomers() {
-        customerServices.getAllEmployees();
-        return ResponseEntity.ok().build();
+    public ResponseEntity<List<Customers>> getDataCustomers() {
+        List<Customers> customers = customerServices.getAllEmployees();
+        return ResponseEntity.ok(customers);
     }
 }
